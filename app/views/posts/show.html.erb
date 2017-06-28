@@ -9,9 +9,17 @@
   <% @bestComments.each do |best| %>
   <li>
     <h3><%=best.content%></h3>
+    <h3><%=best.count%></h3>
   </li>
+
+  <% if user_signed_in? %>
+  <form action="/posts/show/<%=@post.id%>/comments/<%=best.id%>/count" method="post">
+    <input type="submit" value="좋아요">
+  </form>
   <%end%>
+<%end%>
 </ol>
+
 
 
 
@@ -25,6 +33,7 @@
   <p>
     <% if comment.pid == 0%>
       <%= comment.content%>
+
             <% if user_signed_in? %>
 
               <% if current_user.id == comment.user_id %>
