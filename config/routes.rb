@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   post '/posts/update/:post_id' => 'posts#update'
 
   post '/posts/show/:post_id/comments/create' => 'comments#create'
+  post '/posts/show/:post_id/comments/:comment_id/create' => 'comments#createTwo'
   post '/posts/show/:post_id/comments/destroy/:comment_id' => 'comments#destroy'
 end
