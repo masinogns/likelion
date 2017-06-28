@@ -1,24 +1,83 @@
-<h1>지금까지 작성된 포스트들</h1>
-
-<% @posts.each do |post| %>
-  <h3>
-    <a href="/posts/show/<%= post.id %>">
-      <%= post.id %> :
-      <%= post.title %>
-      조회수 <%= post.like %>
-    </a>
-  </h3>
-<% end %>
-
-ppp
-
-<h2><a href="/posts/new">[추가하기]</a></h2>
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 
-  <%= paginate @posts %>
+
+
+
+
+
+
+<div class = "container body-box">
+   <div class="container">
+     <section class="keyword">
+       <h2 class="keyword-title sr-only">키워드</h2>
+       <div class="keyword-tabpanel">
+         <div class="keyword-nav">
+           <a
+             id="nav1"
+             href="#first-tab">n행시</a>
+           <a
+             id="nav2"
+             href="#second-tab">아무말 대잔치</a>
+         </div>
+         <a href="/posts/new">[추가하기]</a>
+         <ul class="keyword-list">
+           <li
+             id="first-tab"
+             class="keyword-item first">
+             <div class="keyword-container">
+
+               <% @latest.each do |recent| %>
+
+                   <a href="/posts/show/<%= recent.id %>">
+                     <%= recent.title %>
+                   </a>
+
+               <% end %>
+             </div>
+           </li>
+           <li
+             id="second-tab"
+             class="keyword-item second">
+             <div class="keyword-container">
+               <a href="#">철수는</a>
+               <a href="#">첫사랑</a>
+               <a href="#">나는 누구인가</a>
+             </div>
+           </li>
+         </ul>
+       </div>
+     </section>
+   </div>
+
+   <section class = "container main-content">
+     <% @posts.each do |post| %>
+       <div class="user-post">
+         <a href="/posts/show/<%= post.id %>">
+           <div class="main-data">
+             <div class="post-title">
+               <h1><%= post.title %></h1>
+             </div>
+           </div>
+         </a>
+         <div class="sub-data">
+           <div class="">
+             <img class="sub-image" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/61-128.png" alt="">
+             <p><%= post.like %></p>
+           </div>
+           <div class="">
+             <img class="sub-image" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_Message-128.png" alt="">
+             <p>덧글수</p>
+           </div>
+           <div class="">
+             <img class="sub-image" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/10-128.png" alt="">
+             <p><%= post.created_at.strftime("%b %d, %Y")%></p>
+           </div>
+         </div>
+       </div>
+       <% end %>
+     </section>
+   </div>
+
+     <%= paginate @posts %>

@@ -54,7 +54,6 @@ class PostsController < ApplicationController
     #실제 디비에 업데이트 되는 곳
     @post = Post.find(params[:post_id])
     @post.title = params[:title]
-    @post.content = params[:content]
     @post.save
 
     redirect_to '/posts/index'

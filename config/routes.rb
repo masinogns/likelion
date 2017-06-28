@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/posts/index' => 'posts#index'
   get '/posts/show/:post_id' => 'posts#show'
 
-  post 'posts/destroy/:post_id' => 'posts#destroy'
+  get 'posts/destroy/:post_id' => 'posts#destroy'
 
   get '/posts/edit/:post_id' => 'posts#edit'
   post '/posts/update/:post_id' => 'posts#update'
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/posts/show/:post_id/comments/:comment_id/create' => 'comments#createTwo'
   post '/posts/show/:post_id/comments/destroy/:comment_id' => 'comments#destroy'
 
-  post '/posts/show/:post_id/comments/:comment_id/count' => 'comments#count'
+  get '/posts/show/:post_id/comments/:comment_id/count' => 'comments#count'
 
   post '/searches/search' => 'searches#search'
 end

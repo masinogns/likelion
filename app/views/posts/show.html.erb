@@ -1,105 +1,139 @@
 
-<h1>포스트 하나에 대한 내용입니다.</h1>
-
-<h2>제목 : <%=@post.title%></h2>
-
-
-
-<ol>
-  <% @bestComments.each do |best| %>
-  <li>
-    <h3><%=best.content1%></h3>
-    <h3><%=best.content2%></h3>
-    <h3><%=best.content3%></h3>
-    <h3><%=best.count%></h3>
-  </li>
-
-  <% if user_signed_in? %>
-  <form action="/posts/show/<%=@post.id%>/comments/<%=best.id%>/count" method="post">
-    <input type="submit" value="좋아요">
-  </form>
-  <%end%>
-<%end%>
-</ol>
 
 
 
 
-<h3>댓글입니다.</h3>
-<form action="/posts/show/<%=@post.id%>/comments/create" method="post">
-   <%= @char[0] %><input type="text" name="input_comment1">
-   <%= @char[1] %><input type="text" name="input_comment2">
-   <%= @char[2] %><input type="text" name="input_comment3">
-  <input type="submit">
-</form>
+<div class = "body-box">
+  <section>
+    <div class="post-part">
+      <div class="post-title">
+        <h2>
+          <%=@post.title%>
+        </h2>
+      </div>
 
-<% @comments.each do |comment| %>
-  <p>
-    <% if comment.pid == 0%>
-      <p><%= comment.content1%></p>
-      <p><%= comment.content2%></p>
-      <p><%= comment.content3%></p>
+    <% @bestComments.each do |best| %>
+      <div class="post-content">
+        <div class="user-post">
+          <div class="main-data">
+            <div class="best-comment">
 
-            <% if user_signed_in? %>
+                  <h3><%=best.content1%></h3>
+                  <h3><%=best.content2%></h3>
+                  <h3><%=best.content3%></h3>
 
-              <% if current_user.id == comment.user_id %>
-                <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
-                  data-method='post'
-                  data-confirm="댓글을 삭제합니다."
-                >
-                [x]
-                </a>
+                <!-- <% if user_signed_in? %>
+
+                <%end%> -->
 
 
-              <%end%>
-              <form action="/posts/show/<%=@post.id%>/comments/<%=comment.id%>/count" method="post">
-                <input type="submit" value="좋아요">
-              </form>
-              <%=comment.count%>
+            </div>
+          </div>
 
-              <form id="dada" action="/posts/show/<%=@post.id%>/comments/<%=comment.id%>/create" method="post">
-                <input type="text" name="input_comment1">
-                <input type="submit">
-              </form>
-
-
-
-            <% end %>
-          <% end %>
-
-
-    <% @comments.each do |ccc| %>
-        <% if ccc.pid == comment.id%>
-          <br>-<%= ccc.content1%>
-        <% end %>
+          <div class="sub-data">
+            <div class="">
+              <a href="/posts/show/<%=@post.id%>/comments/<%=best.id%>/count" method="post"><img class="sub-image" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/like-128.png" alt></a>
+              <p><%=best.count%></p>
+            </div>
+            <div class="">
+              <img class="sub-image" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_Message-128.png" alt="">
+              <p>덧글수</p>
+            </div>
+            <div class="">
+              <img class="sub-image" src="https://cdn2.iconfinder.com/data/icons/pittogrammi/142/10-128.png" alt="">
+              <p><%= @post.created_at.strftime("%b %d, %Y")%></p>
+            </div>
+          </div>
+        </div>
+      <%end%>
 
         <% if user_signed_in? %>
-
-          <% if ccc.pid == comment.id && current_user.id == ccc.user_id %>
-            <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=ccc.id%>"
-              data-method='post'
-              data-confirm="댓글을 삭제합니다."
-            >
-            delete
-            </a>
-
-            <form action="/posts/show/<%=@post.id%>/comments/<%=ccc.id%>/count" method="post">
-              <input type="submit" value="좋아요">
-            </form>
-            <%=ccc.count%>
-
+          <% if current_user.id == @post.user_id %>
+          <a href="/posts/destroy/<%=@post.id%>">[삭제하기]</a>
+          <a href="/posts/edit/<%=@post.id%>">[수정하기]</a>
           <%end%>
-        <%end%>
+        <% end %>
+        <a href="/posts/index"> [목록으로 가기]</a>
 
-    <%end%>
 
-</p>
-<% end %>
 
-<% if user_signed_in? %>
-  <% if current_user.id == @post.user_id %>
-  <a href="/posts/destroy/<%=@post.id%>">[삭제하기]</a>
-  <a href="/posts/edit/<%=@post.id%>">[수정하기]</a>
-  <%end%>
-<% end %>
-<a href="/posts/index"> [목록으로 가기]</a>
+                <div class="comment-input">
+                  <div class="comment-active">
+                    <form action="/posts/show/<%=@post.id%>/comments/create" method="post">
+                    <div class="char1">
+                       <h4 class="char"><%= @char[0] %></h4><input class="input-char" type="text" name="input_comment1">
+                    </div>
+                    <div class="char1">
+                      <h4 class="char"><%= @char[1] %></h4><input class="input-char" type="text" name="input_comment2">
+                    </div>
+                    <div class="char1">
+                      <h4 class="char"><%= @char[2] %></h4><input class="input-char" type="text" name="input_comment3">
+                    </div>
+                  </div>
+                  <div class="btn-comment">
+                    <input type="submit">
+                  </div>
+                  </form>
+                </div>
+
+
+
+
+        <% @comments.each do |comment| %>
+          <p>
+            <% if comment.pid == 0%>
+              <p><%= comment.content1%></p>
+              <p><%= comment.content2%></p>
+              <p><%= comment.content3%></p>
+
+                    <% if user_signed_in? %>
+
+                      <% if current_user.id == comment.user_id %>
+                        <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
+                          data-method='post'
+                          data-confirm="댓글을 삭제합니다."
+                        >
+                        [x]
+                        </a>
+
+
+                      <%end%>
+                      <form action="/posts/show/<%=@post.id%>/comments/<%=comment.id%>/count" method="post">
+                        <input type="submit" value="<%=comment.count%>">
+                      </form>
+
+
+                      <form id="dada" action="/posts/show/<%=@post.id%>/comments/<%=comment.id%>/create" method="post">
+                        <input type="text" name="input_comment1">
+                        <input type="submit">
+                      </form>
+
+                    <% end %>
+                  <% end %>
+
+
+            <% @comments.each do |ccc| %>
+                <% if ccc.pid == comment.id%>
+                  <br>-<%= ccc.content1%>
+                <% end %>
+
+                <% if user_signed_in? %>
+
+                  <% if ccc.pid == comment.id && current_user.id == ccc.user_id %>
+                    <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=ccc.id%>"
+                      data-method='post'
+                      data-confirm="댓글을 삭제합니다."
+                    >
+                    delete
+                    </a>
+
+                    <form action="/posts/show/<%=@post.id%>/comments/<%=ccc.id%>/count" method="post">
+                      <input type="submit" value="좋아요">
+                    </form>
+                    <%=ccc.count%>
+
+                  <%end%>
+                <%end%>
+
+            <%end%>
+        <% end %>

@@ -1,0 +1,227 @@
+*{padding: 0; margin: 0;}
+
+
+
+.navigation{
+  position: fixed;
+}
+
+.nav-all{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 60px;
+}
+
+.home {
+  margin-right: 43px;
+}
+
+.d-block {
+  display: block;
+  width: 35px;
+  height: 35px;
+  color: white;
+}
+
+
+.home-icon{
+  width: 40px;
+  height: 40px;
+}
+
+.search{
+  display: flex;
+  height: 35px;
+  width: 500px;
+}
+
+.search-bar {
+  margin-right: 40px;
+}
+
+.btn-more-icon{
+  margin-left: 30px;
+}
+.search-icon, .btn-more-icon {
+  width: 100%;
+  height: auto;
+}
+
+nav {
+  position: relative;
+}
+
+.account {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.account a {
+  margin-left: 20px;
+  line-height: 60px;
+  color: #fff;
+}
+
+.account a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.account{
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+}
+
+
+
+.body-box{
+  width: 900px;
+  margin: 0 auto;
+}
+
+.main-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.user-post{
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+  border: 1px;
+  position: relative;
+  transition: all 0.5s;
+}
+.user-post:hover{
+  box-shadow: 0px 10px 16px rgba(0,0,0,0.3);
+}
+.user-post:hover a{
+  text-decoration: none;
+}
+
+.sub-data{
+  display: flex;
+  flex-direction: column;
+  margin-left: 400px;
+  padding-left: 20px;
+  border-left: 1px solid #f1f1f1;
+
+}
+
+.sub-data p{
+  display: inline-block;
+  padding: 5px;
+}
+
+.sub-image{
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+ul, ol {
+  list-style-type: none;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.container {
+  width: 1140px;
+  margin: 0 auto;
+}
+.sr-only {
+  font-size: 0;
+}
+
+.keyword-list {
+  position: relative;
+  height: 150px;
+}
+
+.keyword-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.keyword-item.second {
+  display: none;
+}
+
+.keyword-item h3 {
+  display: inline-block;
+}
+
+.keyword-item h3 a {
+  display: inline-block;
+  padding: 15px;
+}
+
+.keyword-container {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+}
+.keyword-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  flex-grow: 1;
+  color: #181818;
+  font-size: 24px;
+  line-height: 150px;
+}
+.keyword-nav {
+  display: flex;
+  justify-content: flex-start
+}
+.keyword-nav a {
+  display: block;
+  padding: 15px;
+  background-color: #f1f1f1;
+  transition: all 0.2s ease-in-out;
+}
+.keyword-nav a:first-child {
+  background-color: #ddd;
+}
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+
+.page-item  a{
+  color: black;
+}
+
+
+.under-bar{
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  padding-top: 10px;
+}
+
+.under-bar img{
+  width: 200px;
+  height: auto;
+  max-height: 31.44px;
+
+}
