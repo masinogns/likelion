@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628162812) do
+ActiveRecord::Schema.define(version: 20170628151442) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "post_id"
-    t.string "content"
+    t.string "content1"
+    t.string "content2"
+    t.string "content3"
     t.integer "count"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -25,7 +27,6 @@ ActiveRecord::Schema.define(version: 20170628162812) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.text "content"
     t.integer "like"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -51,7 +52,6 @@ ActiveRecord::Schema.define(version: 20170628162812) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

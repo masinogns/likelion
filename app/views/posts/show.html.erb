@@ -2,13 +2,15 @@
 <h1>포스트 하나에 대한 내용입니다.</h1>
 
 <h2>제목 : <%=@post.title%></h2>
-<h2>내용 : <%=@post.content%></h2>
+
 
 
 <ol>
   <% @bestComments.each do |best| %>
   <li>
-    <h3><%=best.content%></h3>
+    <h3><%=best.content1%></h3>
+    <h3><%=best.content2%></h3>
+    <h3><%=best.content3%></h3>
     <h3><%=best.count%></h3>
   </li>
 
@@ -25,14 +27,16 @@
 
 <h3>댓글입니다.</h3>
 <form action="/posts/show/<%=@post.id%>/comments/create" method="post">
-  <input type="text" name="input_comment">
+  <input type="text" name="input_comment1">
+  <input type="text" name="input_comment2">
+  <input type="text" name="input_comment3">
   <input type="submit">
 </form>
 
 <% @comments.each do |comment| %>
   <p>
     <% if comment.pid == 0%>
-      <%= comment.content%>
+      <%= comment.content1%>
 
             <% if user_signed_in? %>
 
@@ -52,7 +56,7 @@
               <%=comment.count%>
 
               <form id="dada" action="/posts/show/<%=@post.id%>/comments/<%=comment.id%>/create" method="post">
-                <input type="text" name="input_comment">
+                <input type="text" name="input_comment1">
                 <input type="submit">
               </form>
 
@@ -64,7 +68,7 @@
 
     <% @comments.each do |ccc| %>
         <% if ccc.pid == comment.id%>
-          <br>-<%= ccc.content%>
+          <br>-<%= ccc.content1%>
         <% end %>
 
         <% if user_signed_in? %>

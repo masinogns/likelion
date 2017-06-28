@@ -13,7 +13,6 @@ class PostsController < ApplicationController
 
     @post = Post.new
     @post.title = params[:title]
-    @post.content = params[:content]
     @post.user_id = current_user.id
     @post.like = 0;
     @post.save
@@ -23,7 +22,8 @@ class PostsController < ApplicationController
 
   def index
     # @posts = Post.all
-    @posts = Post.all.page(params[:page]).order("created_at DESC").per(3)
+    @latest = Post.order("created_at DESC").first(3)
+    @posts = Kaminari.paginate_array(Post.order("created_at DESC").last(Post.count-3)).page(params[:page]).per(3)
   end
 
   def show
