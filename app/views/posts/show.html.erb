@@ -13,42 +13,45 @@
   <p>
     <% if comment.pid == 0%>
       <%= comment.content%>
+            <% if user_signed_in? %>
+
+              <% if current_user.id == comment.user_id %>
+                <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
+                  data-method='post'
+                  data-confirm="댓글을 삭제합니다."
+                >
+                [x]
+                </a>
+              <%end%>
+
+              <form action="/posts/show/<%=@post.id%>/comments/<%=comment.id%>/create" method="post">
+                <input type="text" name="input_comment">
+                <input type="submit">
+              </form>
+
+            <% end %>
+          <% end %>
+
 
     <% @comments.each do |ccc| %>
         <% if ccc.pid == comment.id%>
-          <p><%= ccc.content%></p>
+          <br>-<%= ccc.content%>
         <% end %>
-        <!-- <% if user_signed_in? %>
 
-          <% if current_user.id == comment.user_id %>
-            <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
+        <% if user_signed_in? %>
+
+          <% if ccc.pid == comment.id && current_user.id == ccc.user_id %>
+            <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=ccc.id%>"
               data-method='post'
               data-confirm="댓글을 삭제합니다."
             >
-            [x]
+            delete
             </a>
           <%end%>
-        <%end%> -->
-    <%end%>
-
-      <% if user_signed_in? %>
-
-        <% if current_user.id == comment.user_id %>
-          <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
-            data-method='post'
-            data-confirm="댓글을 삭제합니다."
-          >
-          [x]
-          </a>
         <%end%>
 
-        <form action="/posts/show/<%=@post.id%>/comments/<%=comment.id%>/create" method="post">
-          <input type="text" name="input_comment">
-          <input type="submit">
-        </form>
+    <%end%>
 
-      <% end %>
-    <% end %>
 </p>
 <% end %>
 
