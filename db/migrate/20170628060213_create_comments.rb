@@ -4,6 +4,8 @@ class CreateComments < ActiveRecord::Migration[5.1]
       # t.belongs_to :post
       t.integer :post_id
       t.string :content
+      t.integer :count
+      t.references :user, index: true
 
       t.timestamps
     end
