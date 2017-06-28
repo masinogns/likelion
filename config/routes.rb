@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/posts/new' => 'posts#new'
   post '/posts/create' => 'posts#create'
 
-  # root_to: "posts#index"
+  root "posts#index"
   get '/posts/index' => 'posts#index'
   get '/posts/show/:post_id' => 'posts#show'
 
