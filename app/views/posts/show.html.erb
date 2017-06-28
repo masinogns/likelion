@@ -13,15 +13,20 @@
 <% @comments.each do |comment| %>
   <p>
     <%= comment.content%>
-    <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
-      data-method='post'
-      data-confirm="댓글을 삭제합니다."
-    >
-    [x]
-  </a>
+
+    <% if current_user.id == comment.user_id %>
+      <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
+        data-method='post'
+        data-confirm="댓글을 삭제합니다."
+      >
+      [x]
+      </a>
+    <%end%>
 </p>
 <% end %>
 
+<% if current_user.id == @post.user_id %>
 <a href="/posts/destroy/<%=@post.id%>">[삭제하기]</a>
 <a href="/posts/edit/<%=@post.id%>">[수정하기]</a>
+<%end%>
 <a href="/posts/index"> [목록으로 가기]</a>
