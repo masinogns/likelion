@@ -6,27 +6,30 @@
 <h3>댓글입니다.</h3>
 <form action="/posts/show/<%=@post.id%>/comments/create" method="post">
   <input type="text" name="input_comment">
-  <input type="hidden" name="user_id" value="<%= current_user.id %>">
   <input type="submit">
 </form>
 
 <% @comments.each do |comment| %>
   <p>
     <%= comment.content%>
+    <% if user_signed_in? %>
 
-    <% if current_user.id == comment.user_id %>
-      <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
-        data-method='post'
-        data-confirm="댓글을 삭제합니다."
-      >
-      [x]
-      </a>
-    <%end%>
+      <% if current_user.id == comment.user_id %>
+        <a href="/posts/show/<%=@post.id%>/comments/destroy/<%=comment.id%>"
+          data-method='post'
+          data-confirm="댓글을 삭제합니다."
+        >
+        [x]
+        </a>
+      <%end%>
+    <% end %>
 </p>
 <% end %>
 
-<% if current_user.id == @post.user_id %>
-<a href="/posts/destroy/<%=@post.id%>">[삭제하기]</a>
-<a href="/posts/edit/<%=@post.id%>">[수정하기]</a>
-<%end%>
+<% if user_signed_in? %>
+  <% if current_user.id == @post.user_id %>
+  <a href="/posts/destroy/<%=@post.id%>">[삭제하기]</a>
+  <a href="/posts/edit/<%=@post.id%>">[수정하기]</a>
+  <%end%>
+<% end %>
 <a href="/posts/index"> [목록으로 가기]</a>

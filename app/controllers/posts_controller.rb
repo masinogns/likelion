@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.title = params[:title]
     @post.content = params[:content]
-    @post.user_id = params[:user_id]
+    @post.user_id = current_user.id
     @post.like = 0;
     @post.save
 
