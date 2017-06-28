@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, except: [ :index, :show ]
+
   def new
     #사용자가 데이터를 입력할 화면
     #자동으로 액션 이름과 같은 화면을 불러서 사용자에게 보여줘라.!!
