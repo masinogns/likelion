@@ -27,16 +27,18 @@
 
 <h3>댓글입니다.</h3>
 <form action="/posts/show/<%=@post.id%>/comments/create" method="post">
-  <input type="text" name="input_comment1">
-  <input type="text" name="input_comment2">
-  <input type="text" name="input_comment3">
+   <%= @char[0] %><input type="text" name="input_comment1">
+   <%= @char[1] %><input type="text" name="input_comment2">
+   <%= @char[2] %><input type="text" name="input_comment3">
   <input type="submit">
 </form>
 
 <% @comments.each do |comment| %>
   <p>
     <% if comment.pid == 0%>
-      <%= comment.content1%>
+      <p><%= comment.content1%></p>
+      <p><%= comment.content2%></p>
+      <p><%= comment.content3%></p>
 
             <% if user_signed_in? %>
 

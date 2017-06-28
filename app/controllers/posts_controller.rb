@@ -34,6 +34,7 @@ class PostsController < ApplicationController
     # @comments = Comment.where(:post_id => params[:post_id])
     @bestComments = Comment.where(post_id: params[:post_id]).order("count DESC").first(3)
     @comments = Comment.where(post_id: params[:post_id]).order("created_at DESC")
+    @char = @post.title.split("")
 
   end
 
