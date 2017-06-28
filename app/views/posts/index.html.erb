@@ -1,0 +1,12 @@
+<h1>지금까지 작성된 포스트들</h1>
+
+<% @posts.each do |post| %>
+  <h3>
+    <a href="/posts/show/<%= post.id %>">
+      <%= post.id %> :
+      <%= post.title %>
+    </a>
+  </h3>
+<% end %>
+
+<h2><a href="/posts/new">[추가하기]</a></h2>

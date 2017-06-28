@@ -1,0 +1,10 @@
+<h1><%=@post.id %> 포스트를 수정하는 공간입니다.1</h1>
+
+<form action="/posts/update/<%=@post.id%>" method="post">
+  <p>제목</p>
+  <input type="text" name="title" value="<%=@post.title%>">
+  <p>내용</p>
+  <input type="text" name="content" value="<%=@post.content%>">
+  <p>제출</p>
+  <input type="submit" name="" id="">
+</form>
