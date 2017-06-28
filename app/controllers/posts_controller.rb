@@ -21,7 +21,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(3)
   end
 
   def show
