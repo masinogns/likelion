@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id]
     @comment.user_id = current_user.id
     @comment.pid = 0;
+    @comment.count = 0;
     @comment.save
 
     redirect_to "/posts/show/#{params[:post_id]}"
@@ -19,7 +20,16 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id]
     @comment.user_id = current_user.id
     @comment.pid = params[:comment_id]
+    @comment.count = 0;
     @comment.save
+
+    redirect_to "/posts/show/#{params[:post_id]}"
+  end
+
+  def count
+    @countChecking = Comment.find(params[:comment_id])
+    @countChecking.count +=1
+    @countChecking.save
 
     redirect_to "/posts/show/#{params[:post_id]}"
   end

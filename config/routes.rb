@@ -23,4 +23,8 @@ Rails.application.routes.draw do
   post '/posts/show/:post_id/comments/create' => 'comments#create'
   post '/posts/show/:post_id/comments/:comment_id/create' => 'comments#createTwo'
   post '/posts/show/:post_id/comments/destroy/:comment_id' => 'comments#destroy'
+
+  post '/posts/show/:post_id/comments/:comment_id/count' => 'comments#count'
+
+  post '/searches/search' => 'searches#search'
 end

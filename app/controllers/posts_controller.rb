@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def index
     # @posts = Post.all
-    @posts = Post.all.page(params[:page]).per(3)
+    @posts = Post.all.page(params[:page]).order("created_at DESC").per(3)
   end
 
   def show
@@ -32,7 +32,8 @@ class PostsController < ApplicationController
     @post.save
     # 처음 :post_id가 컬럼이름으로 확정, params[:post_id] 주소창에서 넘어오는 값
     # @comments = Comment.where(:post_id => params[:post_id])
-    @comments = Comment.where(post_id: params[:post_id])
+    @bestComments = Comment.where(post_id: params[:post_id]).order("count DESC").first(3)
+    @comments = Comment.where(post_id: params[:post_id]).order("created_at DESC")
 
   end
 

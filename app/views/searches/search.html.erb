@@ -1,0 +1,13 @@
+<h1>검색된 post입니다.</h1>
+
+<% @posts.each do |post| %>
+      <h3>
+        <a href="/posts/show/<%= post.id %>">
+          <%= post.id %>
+          <%= post.title %>
+          <%= post.like %>
+        </a>
+      </h3>
+<% end %>
+
+<a href="/posts/index"> [목록으로 가기]</a>

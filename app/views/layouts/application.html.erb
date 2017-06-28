@@ -25,6 +25,14 @@
 
     <% end %>
 
+    <form action="/searches/search" method = "post">
+     <input type = "text" name ="search_content">
+     <input type = "submit" value ="검색">
+    </form>
+
     <%= yield %>
+
+
+    <h2>footer</h2>
   </body>
 </html>
