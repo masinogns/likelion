@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.title = params[:title]
     @post.content = params[:content]
+    @post.count = 0;
     @post.save
 
     redirect_to "/posts/show/#{@post.id}"
@@ -25,9 +26,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:post_id])
+    @post.count +=1
+    @post.save
     # 처음 :post_id가 컬럼이름으로 확정, params[:post_id] 주소창에서 넘어오는 값
     # @comments = Comment.where(:post_id => params[:post_id])
     @comments = Comment.where(post_id: params[:post_id])
+
   end
 
   def destroy
